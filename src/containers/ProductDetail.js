@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, removeSelectedProduct } from '../redux/actions/productActions';
@@ -10,13 +9,12 @@ const ProductDetail = () => {
   const product = useSelector(state => state.product);
   console.log(product);
 
-  
   useEffect(() => {
-    if (productId && productId !== "") dispatch(fetchProduct(productId)) ;
-    return (()=> {
+    if (productId && productId !== "") dispatch(fetchProduct(productId));
+    return () => {
       dispatch(removeSelectedProduct());
-    })
-  }, [productId]);
+    };
+  }, []);
 
   return (
     <div className='container'>
