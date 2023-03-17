@@ -1,12 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ProductComponent = () => {
-    const products = useSelector((state) => state.allProducts.products);
-
-    const renderList = products.map((product) => {
-        const { id, title, price, image, category } = product;
+  const products = useSelector((state) => state.allProducts.products);
+  const renderList = products.map((product) => {
+    const { id, title, image, price, category } = product;
         return (
             <div className='col-md-3' key={id}>
                 <Link to={`product/${id}`} >

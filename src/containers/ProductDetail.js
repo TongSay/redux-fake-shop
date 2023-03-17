@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct, removeSelectedProduct } from '../redux/actions/productActions';
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchProduct,
+  removeSelectedProduct,
+} from "../redux/actions/productActions";
 
 const ProductDetail = () => {
+  const product = useSelector((state) => state.product);
+  const {id, image, title, price, category, description } = product;
   const { productId } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector(state => state.product);
   console.log(product);
 
   useEffect(() => {
@@ -15,17 +19,17 @@ const ProductDetail = () => {
       dispatch(removeSelectedProduct());
     };
   }, []);
-
   return (
     <div className='container'>
       <div className="row">
-        <div className='col-md-4' key={product.id}>
+        <div className='col-md-4' key={id}>
           <div className="card mt-5">
             <div className="card-body">
-              <img src={product.image} className="card-img-top" alt={product.title} />
-              <h5 className="card-title">{product.title}</h5>
-              <p className="card-text">$ {product.price}</p>
-              <p className="card-text">{product.category}</p>
+              <img src={image} className="card-img-top" alt={title} />
+              <h5 className="card-title">{title}</h5>
+              <p className="card-text">$ {price}</p>
+              <p className="card-text">{description}</p>
+              <p className="card-text">{category}</p>
 
             </div>
           </div>
