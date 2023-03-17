@@ -18,7 +18,7 @@ const ProductDetail = () => {
     return () => {
       dispatch(removeSelectedProduct());
     };
-  }, []);
+  },[]);
   return (
     <div className='container'>
       <div className="row">
